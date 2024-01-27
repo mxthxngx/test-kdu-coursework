@@ -320,9 +320,11 @@ public class GeoCodingImpTest {
     @BeforeEach
 
 public void tearDown() throws InterruptedException {
+public void tearDown() throws InterruptedException {
 
         cacheManager.getCache("geocoding").clear();
         cacheManager.getCache("reverse-geocoding").clear();
+        Thread.sleep(REQUEST_DELAY_MS);
         Thread.sleep(REQUEST_DELAY_MS);
     }
    private synchronized void hitGeoCodingCache(String address) throws Exception {
@@ -349,6 +351,7 @@ public void tearDown() throws InterruptedException {
 
         mockAPIForwardResponse=mockForwardResponse;
         mockReverseAPIResponse = mockReverseResponse;
+        System.out.println("mock forward response "+mockForwardResponse+" "+mockReverseResponse);
         System.out.println("mock forward response "+mockForwardResponse+" "+mockReverseResponse);
     }
 }
